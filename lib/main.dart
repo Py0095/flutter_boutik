@@ -73,11 +73,11 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 const SizedBox(width: 20),
                 Expanded(
-                  child: const ProductList(),
+                  child: const Product(),
                 ),
                 const SizedBox(width: 20),
                 Expanded(
-                  child: const ProductList(),
+                  child: const Product(),
                 ),
                 const SizedBox(width: 20),
               ],
@@ -112,6 +112,9 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
+
+
+
 class Category extends StatelessWidget {
   const Category({Key? key});
 
@@ -130,10 +133,14 @@ class Category extends StatelessWidget {
   }
 }
 
-class ProductList extends StatelessWidget {
+
+
+
+
+class Product extends StatelessWidget {
   final String? title;
 
-  const ProductList({Key? key,this.title});
+  const Product({Key? key,this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -141,6 +148,7 @@ class ProductList extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          SizedBox(height: 20),
           GestureDetector(
             onTap: () {
               Navigator.push(
@@ -245,6 +253,93 @@ class ProductDetail extends StatelessWidget {
   }
 }
 
+
+class ProducList extends StatelessWidget {
+  const ProducList({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return  Scaffold(
+      appBar: AppBar(
+        iconTheme: const IconThemeData(color: Colors.white),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text('list Pwodwi',
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold)),
+            const Icon(Icons.shopping_cart, size: 30, color: Colors.white),
+          ],
+        ),
+        backgroundColor: const Color.fromARGB(255, 12, 96, 222),
+      ),
+      drawer: const DrawerComponent(),
+      body: SingleChildScrollView(
+        
+        child: Column(
+                     mainAxisAlignment: MainAxisAlignment.center,
+
+         children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(width: 20),
+                const SizedBox(width: 20),
+                Expanded(
+                  child: const Product(),
+                ),
+                const SizedBox(width: 20),
+                Expanded(
+                  child: const Product(),
+                ),
+                const SizedBox(width: 20),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(width: 20),
+                const SizedBox(width: 20),
+                Expanded(
+                  child: const Product(),
+                ),
+                const SizedBox(width: 20),
+                Expanded(
+                  child: const Product(),
+                ),
+                const SizedBox(width: 20),
+              ],
+            ),
+            
+          
+         ],
+          
+        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: const Color.fromARGB(255, 141, 147, 156),
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home, size: 30),
+            label: 'akèy',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart, size: 30),
+            label: 'panier',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person, size: 30),
+            label: 'Konekte',
+          ),
+        ],
+        selectedItemColor: const Color.fromARGB(255, 12, 96, 222),
+      ),
+    );
+  }
+}
+
 class DrawerComponent extends StatelessWidget {
   const DrawerComponent({Key? key});
 
@@ -275,7 +370,7 @@ class DrawerComponent extends StatelessWidget {
             onTap: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const ProductList(title:'Detay pwodwi'))),
+                    builder: (context) => const ProducList())),
             title: const Text('Lis pwodwi', style: TextStyle(fontSize: 20)),
             leading: const FaIcon(FontAwesomeIcons.newspaper, size: 20),
           ),
